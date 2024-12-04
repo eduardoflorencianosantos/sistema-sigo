@@ -1,8 +1,12 @@
-/* Resetando margens e preenchimento padrão */
+/* Link da tipografia da página */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Alteração de toda a página */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 /* Estilo geral da página */
@@ -36,6 +40,89 @@ h1 {
     color: #fff;
 }
 
+/* Container principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Altura total menos o cabeçalho e o rodapé */
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Título */
+.container h1 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Estilo dos cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    flex: 1 1 calc(25% - 20px); /* Menores, ocupando 25% do espaço */
+    max-width: calc(25% - 20px);
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Imagem do card */
+.card-img {
+    width: 100%; /* Preenche a largura do card */
+    height: auto;
+    object-fit: cover;
+}
+
+/* Conteúdo do card */
+.card-content {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Subtítulo do card */
+.card-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Parágrafo do card */
+.card-content p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Estilização do botão */
+.btn-choose {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Alteração de cor do botão */
+.btn-choose:hover {
+    background-color: #0056b3;
+}
+
+/* Efeito de hover nos cards */
+.card:hover {
+    transform: translateY(-10px);
+}
+
 /* Rodapé */
 footer {
     background-color: #343a40;
@@ -50,104 +137,24 @@ footer p {
     margin: 5px 0;
 }
 
-/* Container principal */
-.container {
-    flex: 1;
-    text-align: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Título */
-.container h1 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #333;
-}
-
-/* Flex container para os cards */
-.cards {
-    display: flex;
-    justify-content: space-around;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-/* Estilo dos cards */
-.card {
-    background-color: #fff;
-    width: 300px;
-    height: 480px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Imagem do card */
-.card-img {
-    width: 100%;
-    height: 285px;
-    object-fit: cover;
-    border-bottom: 2px solid #f0f0f0;
-}
-
-/* Conteúdo do card */
-.card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.card-content h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.card-content p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.btn-choose {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-choose:hover {
-    background-color: #45a049;
-}
-
-/* Efeito de hover nos cards */
-.card:hover {
-    transform: translateY(-10px);
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
+/* Responsividade */
+@media (max-width: 1024px) {
     .card {
-        width: 90%;
-        margin-bottom: 20px;
+        flex: 1 1 calc(33.333% - 20px); /* 3 cards por linha */
+        max-width: calc(33.333% - 20px);
     }
+}
 
-    h1 {
-        font-size: 28px;
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 20px); /* 2 cards por linha */
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 100%; /* 1 card por linha */
+        max-width: 100%;
     }
 }
